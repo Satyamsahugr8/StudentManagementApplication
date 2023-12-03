@@ -1,5 +1,7 @@
 package com.project.StudentManagementApplication.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,10 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private Address address;
+
+	public Student() {
+		super();
+	}
 
 	public Student(int student_id, String firstName, String lastName, int age, Address address) {
 		this.student_id = student_id;

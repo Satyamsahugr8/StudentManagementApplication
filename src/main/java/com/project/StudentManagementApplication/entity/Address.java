@@ -1,5 +1,7 @@
 package com.project.StudentManagementApplication.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,9 @@ public class Address {
     private int address_id;
     private String address;
 
+    public Address() {
+        super();
+    }
     public Address(int address_id, String address) {
         this.address_id = address_id;
         this.address = address;
