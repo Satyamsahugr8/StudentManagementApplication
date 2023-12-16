@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -21,8 +22,8 @@ public class Student {
 	String lastName;
 	int age;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "book_id")
-	private Book book;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "student_id")
+	private List<Book> book;
 
 }

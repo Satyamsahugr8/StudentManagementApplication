@@ -28,14 +28,14 @@ public class TestRunner implements CommandLineRunner{
         bookList.add(book1);
         bookList.add(book2);
 
-        Student student1 = new Student(1,"amit", "gadha", 22, book1);
-        Student student2 = new Student(2,"sanu", "kumar", 23, book1);
-        Student student3 = new Student(3,"anil", "sahu", 18, book1);
-        Student student4 = new Student(4,"priyanka", "gowda", 21, book2);
+        Student student1 = new Student(1,"amit", "gadha", 22, bookList);
+//        Student student2 = new Student(2,"sanu", "kumar", 23, book1);
+//        Student student3 = new Student(3,"anil", "sahu", 18, book1);
+//        Student student4 = new Student(4,"priyanka", "gowda", 21, book2);
 
         studentRepository.save(student1);
-        studentRepository.save(student2);
-        studentRepository.save(student3);
-        studentRepository.save(student4);
+//        studentRepository.save(student2);
+//        studentRepository.save(student3);
+//        studentRepository.save(student4);
     }
 }
