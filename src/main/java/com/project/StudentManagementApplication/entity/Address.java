@@ -14,12 +14,36 @@ public class Address {
     private int address_id;
     private String address;
 
-    public Address() {
-        super();
+    //bidirectional
+     @ManyToOne
+     @JoinColumn(name = "student_id")
+     private Student student;
+
+    public Student getStudent() {
+        return student;
     }
-    public Address(int address_id, String address) {
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Address(int address_id, String address, Student student) {
         this.address_id = address_id;
         this.address = address;
+        this.student = student;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "address_id=" + address_id +
+                ", address='" + address + '\'' +
+                ", student=" + student +
+                '}';
+    }
+
+    public Address() {
+        super();
     }
 
     public int getAddress_id() {
@@ -38,11 +62,15 @@ public class Address {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "address_id=" + address_id +
-                ", address='" + address + '\'' +
-                '}';
-    }
+//    public Address(int address_id, String address) {
+//        this.address_id = address_id;
+//        this.address = address;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Address{" +
+//                "address_id=" + address_id +
+//                ", address='" + address + '}';
+//    }
 }

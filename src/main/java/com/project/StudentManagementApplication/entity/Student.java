@@ -3,6 +3,8 @@ package com.project.StudentManagementApplication.entity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Student_Table")
@@ -15,15 +17,20 @@ public class Student {
 	String lastName;
 	int age;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id")
-	private Address address;
+	//onedirectional
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name="Student_Address", joinColumns= @JoinColumn(name="student_id"), inverseJoinColumns=@JoinColumn(name="address_id"))
+//	private List<Address> address = new ArrayList<>();
+
+	//bidirectional
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+	private List<Address> address = new ArrayList<>();
 
 	public Student() {
 		super();
 	}
 
-	public Student(int student_id, String firstName, String lastName, int age, Address address) {
+	public Student(int student_id, String firstName, String lastName, int age, List<Address> address) {
 		this.student_id = student_id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -63,11 +70,11 @@ public class Student {
 		this.age = age;
 	}
 
-	public Address getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
 
