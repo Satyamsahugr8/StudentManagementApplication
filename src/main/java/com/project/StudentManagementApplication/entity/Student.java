@@ -22,8 +22,8 @@ public class Student {
 	String lastName;
 	int age;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "student_id")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "student_book_Table", joinColumns = @JoinColumn(name = "student_Id"), inverseJoinColumns = @JoinColumn(name = "book_Id"))
 	private List<Book> book;
 
 }
