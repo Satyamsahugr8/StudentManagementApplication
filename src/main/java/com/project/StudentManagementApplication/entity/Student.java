@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -11,14 +12,12 @@ import javax.persistence.*;
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "student_id")
-	int student_id;
+	@Column(name = "student_Id")
+	int studentId;
 	String firstName;
-	String lastName;
-	int age;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
-	@JoinColumn(name = "address_id")
-	private Address address;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Student_Course_Table", joinColumns = { @JoinColumn(name = "student_Id") }, inverseJoinColumns = { @JoinColumn(name = "course_Id") })
+	private List<Course> courses;
 
 }

@@ -1,7 +1,9 @@
 package com.project.StudentManagementApplication;
 
 import com.project.StudentManagementApplication.entity.Address;
+import com.project.StudentManagementApplication.entity.Course;
 import com.project.StudentManagementApplication.entity.Student;
+import com.project.StudentManagementApplication.repository.AddressRepository;
 import com.project.StudentManagementApplication.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,27 +16,45 @@ import java.util.List;
 public class TestRunner implements CommandLineRunner{
     @Autowired
     private StudentRepository studentRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
-        Address address = new Address();
-        address.setAddress_id(1);
-        address.setAddress("#1 prachii vignan nagar");
-        Student student1 = new Student();
-        student1.setStudent_id(1);
-        student1.setFirstName("satyam");
-        student1.setLastName("sahu");
-        student1.setAge(23);
+        Course course1 = new Course();
+        course1.setTitle("C++");
 
-        student1.setAddress(address);
-        address.setStudent(student1);
-//        Student student2 = new Student(2,"sanu", "kumar", 23, bookList);
-//        Student student3 = new Student(3,"anil", "sahu", 18, book1);
-//        Student student4 = new Student(4,"priyanka", "gowda", 21, book2);
+        Course course2 = new Course();
+        course2.setTitle("Python");
+
+        Course course3 = new Course();
+        course3.setTitle("Java");
+
+        Course course4 = new Course();
+        course4.setTitle("Abap");
+
+        Student student1 = new Student();
+        student1.setFirstName("Aman");
+        List<Course> courses1 = new ArrayList<>();
+        courses1.add(course1);
+        courses1.add(course3);
+        student1.setCourses(courses1);
+
+        Student student2 = new Student();
+        student2.setFirstName("bipin");
+        List<Course> courses2 = new ArrayList<>();
+        courses2.add(course4);
+        courses2.add(course2);
+        student2.setCourses(courses2);
+
+//        Student student3 = new Student();
+//        student3.setFirstName("chinmay");
+//        List<Course> courses3 = new ArrayList<>();
+////        courses3.add(course5);
+//        student3.setCourses(courses3);
 
         studentRepository.save(student1);
-//        studentRepository.save(student2);
+        studentRepository.save(student2);
 //        studentRepository.save(student3);
-//        studentRepository.save(student4);
+
     }
 }

@@ -4,20 +4,19 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
 @Table(name = "Address_Table")
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id")
-    private int address_id;
+    @Column(name = "address_Id")
+    private int addressId;
     private String address;
 
-    @OneToOne
-    @JoinColumn(name = "student_Id")
-    private Student student;
+//    @ManyToMany(mappedBy = "address")
+//    private List<Student> student;
 
 }

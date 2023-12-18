@@ -42,9 +42,9 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student updateUser(Student existingStudent, Student student) {
 		existingStudent.setFirstName(student.getFirstName());
-		existingStudent.setLastName(student.getLastName());
-		existingStudent.setAge(student.getAge());
-		existingStudent.setAddress(student.getAddress());
+//		existingStudent.setLastName(student.getLastName());
+//		existingStudent.setAge(student.getAge());
+//		existingStudent.setAddress(student.getAddress());
 		return existingStudent;
 	}
 
