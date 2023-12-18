@@ -2,6 +2,7 @@ package com.project.StudentManagementApplication;
 
 import com.project.StudentManagementApplication.entity.Address;
 import com.project.StudentManagementApplication.entity.Student;
+import com.project.StudentManagementApplication.repository.AddressRepository;
 import com.project.StudentManagementApplication.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,30 +12,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TestRunner implements CommandLineRunner{
+public class TestRunner implements CommandLineRunner {
     @Autowired
     private StudentRepository studentRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
-        Address address = new Address();
-        address.setAddress_id(1);
-        address.setAddress("#1 prachii vignan nagar");
+        Address a1 = new Address();
+        a1.setAddress("#1 prachii vignan nagar");
+
+        Address a2 = new Address();
+        a2.setAddress("#143 Housing park colony");
+
+        List<Address> addresses = new ArrayList<>();
+        addresses.add(a1);
+        addresses.add(a2);
+
         Student student1 = new Student();
-        student1.setStudent_id(1);
         student1.setFirstName("satyam");
         student1.setLastName("sahu");
-        student1.setAge(23);
+        student1.setAge(24);
+        student1.setAddress(addresses);
 
-        student1.setAddress(address);
-        address.setStudent(student1);
-//        Student student2 = new Student(2,"sanu", "kumar", 23, bookList);
-//        Student student3 = new Student(3,"anil", "sahu", 18, book1);
-//        Student student4 = new Student(4,"priyanka", "gowda", 21, book2);
+        a1.setStudent(student1);
+        a2.setStudent(student1);
 
         studentRepository.save(student1);
-//        studentRepository.save(student2);
-//        studentRepository.save(student3);
-//        studentRepository.save(student4);
+
     }
 }
