@@ -17,6 +17,6 @@ public class Address {
     private String address;
 
 //    @ManyToMany(mappedBy = "address")
-//    private List<Student> student;
+//    private List<Student> students;
 
 }
