@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -33,6 +34,7 @@ public class TestRunner implements CommandLineRunner{
         course3.setTitle("Java");
 
         Course course4 = new Course();
+        course3.setCourseId(1);
         course4.setTitle("Abap");
 
         Student student1 = new Student();
@@ -43,16 +45,19 @@ public class TestRunner implements CommandLineRunner{
         student2.setStudentId(65);
         student2.setFirstName("bipin");
 
-        List<Course> student1Courses = student1.getCourses();
-        student1Courses.add(course1);
-        student1Courses.add(course2);
-        student1Courses.add(course3);
+        List<Course> courses1 = new ArrayList<>();
+        courses1.add(course1);
+        courses1.add(course2);
+        courses1.add(course3);
 
 
-        List<Course> student2Courses = student2.getCourses();
-        student2Courses.add(course1);
-        student2Courses.add(course2);
-        student2Courses.add(course4);
+        List<Course> courses2 = new ArrayList<>();
+        courses2.add(course1);
+        courses2.add(course2);
+        courses2.add(course4);
+
+        student1.setCourses(courses1);
+        student2.setCourses(courses2);
 
         studentRepository.save(student1);
         studentRepository.save(student2);
