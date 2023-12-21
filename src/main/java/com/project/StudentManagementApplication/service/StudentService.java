@@ -15,5 +15,5 @@ public interface StudentService {
 
 	void deleteAllUser();
 
-	Student updateUser(Student user, Student existingUser);
+	void updateUser(Student user, Student existingUser);
 }

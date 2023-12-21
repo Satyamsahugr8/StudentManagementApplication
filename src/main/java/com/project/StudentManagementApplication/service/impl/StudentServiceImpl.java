@@ -1,7 +1,8 @@
-package com.project.StudentManagementApplication.service;
+package com.project.StudentManagementApplication.service.impl;
 
 import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.repository.StudentRepository;
+import com.project.StudentManagementApplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,12 +41,11 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student updateUser(Student existingStudent, Student student) {
+	public void updateUser(Student existingStudent, Student student) {
 		existingStudent.setFirstName(student.getFirstName());
 //		existingStudent.setLastName(student.getLastName());
 //		existingStudent.setAge(student.getAge());
 //		existingStudent.setAddress(student.getAddress());
-		return existingStudent;
 	}
 
 }

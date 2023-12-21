@@ -1,8 +1,10 @@
 package com.project.StudentManagementApplication.controller;
 
+import com.project.StudentManagementApplication.configuration.Common;
 import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,6 +58,11 @@ public class StudentController {
 	public ResponseEntity<String> deleteAllUsers() {
 		studentService.deleteAllUser();
 		return new ResponseEntity<>("all user Deleted", HttpStatus.OK);
+	}
+
+	@GetMapping("/value")
+	public ResponseEntity<String> value( @Value("${myapp.title}") String title, @Value("${myapp.version}") String version, @Value("${myapp.build}") String build ) {
+		return new ResponseEntity<>(title +"|"+ version +"|"+ build, HttpStatus.OK);
 	}
 
 }

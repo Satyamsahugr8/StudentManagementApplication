@@ -1,9 +1,7 @@
 package com.project.StudentManagementApplication;
 
-import com.project.StudentManagementApplication.entity.Address;
 import com.project.StudentManagementApplication.entity.Course;
 import com.project.StudentManagementApplication.entity.Student;
-import com.project.StudentManagementApplication.repository.AddressRepository;
 import com.project.StudentManagementApplication.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +17,7 @@ public class TestRunner implements CommandLineRunner{
     private StudentRepository studentRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Course course1 = new Course();
         course1.setCourseId(5);
