@@ -15,37 +15,47 @@ public class StudentServiceImpl implements StudentService {
 	private StudentRepository studentRepository;
 	
 	@Override
-	public Student saveUser(Student user) {
-		return studentRepository.save(user);
+	public Student saveStudent(Student student) {
+		return studentRepository.save(student);
 	}
 
     @Override
-	public List<Student> getAllUsers() {
+	public List<Student> getAllStudents() {
 		return (List<Student>) studentRepository.findAll();
 	}
     
 	@Override
-	public Student getUserById(@RequestBody int userId) {
-		return studentRepository.findById(userId).get();
+	public Student getStudentById(@RequestBody int studentId) {
+		return studentRepository.findById(studentId).get();
 	}
 	
 	@Override
-	public void deleteUser(Student existingUser) {
-		studentRepository.delete(existingUser);
+	public void deleteStudent(Student existingStudent) {
+		studentRepository.delete(existingStudent);
 	}
 
 	@Override
-	public void deleteAllUser() {
+	public void deleteAllStudents() {
 		studentRepository.deleteAll();
 	}
 
 	@Override
-	public Student updateUser(Student existingStudent, Student student) {
+	public Student updateStudent(Student existingStudent, Student student) {
 		existingStudent.setFirstName(student.getFirstName());
 		existingStudent.setLastName(student.getLastName());
 		existingStudent.setAge(student.getAge());
 		existingStudent.setAddress(student.getAddress());
 		return existingStudent;
+	}
+
+	@Override
+	public Student getStudentbyFirstName(String firstName) {
+		return studentRepository.findByFirstName(firstName);
+	}
+
+	@Override
+	public Student getStudentbyFirstNameIgnoreCase(String firstName) {
+		return studentRepository.findByFirstNameIgnoreCase(firstName);
 	}
 
 }

@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentRepository extends CrudRepository<Student, Integer>{
+
+    public Student findByFirstName(String firstName);
+    public Student findByFirstNameIgnoreCase(String firstName);
+
 }

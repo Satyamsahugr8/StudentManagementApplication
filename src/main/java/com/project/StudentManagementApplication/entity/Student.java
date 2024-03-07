@@ -3,7 +3,7 @@ package com.project.StudentManagementApplication.entity;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Data
