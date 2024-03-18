@@ -1,14 +1,20 @@
 server:
     port: 8080
-
 spring:
     profiles:
-      active:
-        - dev
+        active:
+            - qa
+
+---
+spring:
+    config:
+      activate:
+          on-profile:
+              - dev
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: Qwer@1234
-        url: jdbc:mysql://localhost:3306/StudentDb
+        url: jdbc:mysql://localhost:3306/StudentDb-jpa
         username: root
     jpa:
         hibernate:
@@ -20,6 +26,34 @@ spring:
     test:
       database:
         replace: none
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+
+---
+
+spring:
+    config:
+        activate:
+            on-profile:
+                - qa
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: Qwer@1234
+        url: jdbc:mysql://localhost:3306/StudentDb-qa
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+        show-sql: true
+    test:
+        database:
+            replace: none
 management:
     endpoints:
         web:
