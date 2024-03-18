@@ -1,21 +1,29 @@
 package com.project.StudentManagementApplication.service;
 
+import com.project.StudentManagementApplication.entity.Address;
 import com.project.StudentManagementApplication.entity.Student;
+import com.project.StudentManagementApplication.exception.StudentNotFoundException;
 import com.project.StudentManagementApplication.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-	
-	@Autowired
 	private StudentRepository studentRepository;
+	@Autowired
+	public StudentServiceImpl(StudentRepository studentRepository) {
+		this.studentRepository = studentRepository;
+	}
 	
 	@Override
 	public Student saveStudent(Student student) {
+		// here this is required in order to map from address side too
+		Address address = student.getAddress();
+		address.setStudent(student);
 		return studentRepository.save(student);
 	}
 
@@ -25,8 +33,12 @@ public class StudentServiceImpl implements StudentService {
 	}
     
 	@Override
-	public Student getStudentById(@RequestBody int studentId) {
-		return studentRepository.findById(studentId).get();
+	public Student getStudentById(@RequestBody int studentId) throws StudentNotFoundException {
+		Optional<Student> student = studentRepository.findById(studentId);
+		if (!student.isPresent()) {
+			throw new StudentNotFoundException("Student not found");
+		}
+		return student.get();
 	}
 	
 	@Override

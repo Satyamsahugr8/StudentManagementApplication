@@ -1,0 +1,27 @@
+server:
+    port: 8080
+
+spring:
+    profiles:
+      active:
+        - dev
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: Qwer@1234
+        url: jdbc:mysql://localhost:3306/StudentDb
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+        show-sql: true
+    test:
+      database:
+        replace: none
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
