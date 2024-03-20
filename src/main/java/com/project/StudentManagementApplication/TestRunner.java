@@ -1,14 +1,9 @@
 package com.project.StudentManagementApplication;
 
-import com.project.StudentManagementApplication.entity.Address;
-import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class TestRunner implements CommandLineRunner{

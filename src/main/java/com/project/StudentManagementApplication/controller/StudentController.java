@@ -1,6 +1,5 @@
 package com.project.StudentManagementApplication.controller;
 
-import com.project.StudentManagementApplication.entity.Address;
 import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.exception.StudentNotFoundException;
 import com.project.StudentManagementApplication.service.StudentService;

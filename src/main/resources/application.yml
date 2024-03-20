@@ -3,14 +3,14 @@ server:
 spring:
     profiles:
         active:
-            - qa
+            - devjpa
 
 ---
 spring:
     config:
       activate:
           on-profile:
-              - dev
+              - devjpa
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: Qwer@1234

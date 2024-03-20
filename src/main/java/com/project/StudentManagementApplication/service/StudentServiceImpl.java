@@ -1,6 +1,5 @@
 package com.project.StudentManagementApplication.service;
 
-import com.project.StudentManagementApplication.entity.Address;
 import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.exception.StudentNotFoundException;
 import com.project.StudentManagementApplication.repository.StudentRepository;
@@ -22,8 +21,8 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student saveStudent(Student student) {
 		// here this is required in order to map from address side too
-		Address address = student.getAddress();
-		address.setStudent(student);
+//		Address address = student.getAddress();
+//		address.setStudent(student);
 		return studentRepository.save(student);
 	}
 
@@ -56,7 +55,7 @@ public class StudentServiceImpl implements StudentService {
 		existingStudent.setFirstName(student.getFirstName());
 		existingStudent.setLastName(student.getLastName());
 		existingStudent.setAge(student.getAge());
-		existingStudent.setAddress(student.getAddress());
+//		existingStudent.setAddress(student.getAddress());
 		return existingStudent;
 	}
 

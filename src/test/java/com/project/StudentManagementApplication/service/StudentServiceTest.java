@@ -1,6 +1,5 @@
 package com.project.StudentManagementApplication.service;
 
-import com.project.StudentManagementApplication.entity.Address;
 import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.repository.StudentRepository;
 import org.junit.jupiter.api.BeforeEach;

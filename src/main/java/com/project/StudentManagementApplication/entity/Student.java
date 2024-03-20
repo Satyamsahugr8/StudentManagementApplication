@@ -15,20 +15,28 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Student_Table")
+@Table(name = "student_Table")
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "student_id")
 	int student_id;
+
 	@NotBlank(message = "firstName required")
 	@Length( min = 5 , max = 20)
+	@Column(name = "student_firstname")
 	String firstName;
+
+	@Column(name = "student_lastname")
 	String lastName;
+
+	@Column(name = "student_age")
 	int age;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
-	@JoinColumn(name = "address_id")
-	private Address address;
+	@Column(name = "student_email", nullable = false)
+    String emailId;
+
+	@Embedded
+	private Guardian guardian;
 
 }
