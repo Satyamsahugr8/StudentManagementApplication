@@ -1,13 +1,13 @@
 package com.project.StudentManagementApplication.repository;
 
 import com.project.StudentManagementApplication.entity.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentRepository extends CrudRepository<Student, Integer>{
+public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     public Student findByFirstName(String firstName);
     public Student findByFirstNameIgnoreCase(String firstName);

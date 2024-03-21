@@ -35,7 +35,6 @@ class StudentControllerTest {
                 .firstName("satyam")
                 .lastName("sahu")
                 .age(24)
-                .student_id(1)
                 .build();
     }
 

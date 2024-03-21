@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -19,8 +21,7 @@ import jakarta.persistence.*;
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "student_id")
-	int student_id;
+	int studentId;
 
 	@NotBlank(message = "firstName required")
 	@Length( min = 5 , max = 20)
@@ -38,5 +39,8 @@ public class Student {
 
 	@Embedded
 	private Guardian guardian;
+
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "students")
+	private List<Course> courses;
 
 }

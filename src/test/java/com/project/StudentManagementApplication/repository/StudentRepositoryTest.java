@@ -46,6 +46,6 @@ class StudentRepositoryTest {
         Student saveStudent = studentRepository.save(student);
         // Then : Verify the output
         Assertions.assertThat(saveStudent).isNotNull();
-        Assertions.assertThat(saveStudent.getStudent_id()).isGreaterThan(0);
+        Assertions.assertThat(saveStudent.getStudentId()).isGreaterThan(0);
     }
 }
