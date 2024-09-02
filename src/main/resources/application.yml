@@ -1,0 +1,38 @@
+logging:
+    level:
+        com:
+            capg:
+                mgs:
+                    controller: TRACE
+        root: INFO
+server:
+    port: 8080
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        password: qwer1234
+        url: jdbc:h2:mem:mydb
+        username: root
+    h2:
+        console:
+            enabled: true
+    jpa:
+        defer-datasource-initialization: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.H2Dialect
+                globally_quoted_identifiers: true
+        show-sql: true
+    mvc:
+        pathmatch:
+            matching-strategy: ANT_PATH_MATCHER
+springfox:
+    documentation:
+        swagger:
+            v2:
+                ui:
+                    SwaggerUiConfigUiProperties:
+                        description: API documentation for my Spring Boot application
+                        title: My API Documentation

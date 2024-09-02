@@ -1,12 +1,14 @@
-package com.project.StudentManagementApplication.service;
+package com.project.StudentManagementApplication.service.impl;
 
 import com.project.StudentManagementApplication.entity.Student;
 import com.project.StudentManagementApplication.repository.StudentRepository;
+import com.project.StudentManagementApplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -26,7 +28,12 @@ public class StudentServiceImpl implements StudentService {
     
 	@Override
 	public Student getUserById(@RequestBody int userId) {
-		return studentRepository.findById(userId).get();
+		Optional optional = studentRepository.findById(userId);
+		Student student = null;
+		if (optional.isPresent()) {
+			student = (Student) optional.get();
+		}
+		return student;
 	}
 	
 	@Override
