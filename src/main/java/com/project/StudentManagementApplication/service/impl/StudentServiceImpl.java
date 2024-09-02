@@ -29,6 +29,8 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student getStudentById(@RequestBody int userId) {
 		return studentRepository.findById(userId).get();
+	}
+
 	public Student getUserById(@RequestBody int userId) {
 		Optional optional = studentRepository.findById(userId);
 		Student student = null;
