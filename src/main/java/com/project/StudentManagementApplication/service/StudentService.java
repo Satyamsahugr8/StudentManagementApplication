@@ -5,15 +5,15 @@ import java.util.List;
 
 public interface StudentService {
 	
-	Student saveUser(Student user);
+	Student saveStudent(Student student);
 
-	List<Student> getAllUsers();
+	List<Student> getAllStudents();
 
-	Student getUserById(int userId);
+	Student getStudentById(int studentId);
 
-	void deleteUser(Student existingUser);
+	void deleteStudent(Student existingStudent);
 
-	void deleteAllUser();
+	void deleteAllStudents();
 
-	Student updateUser(Student user, Student existingUser);
+	Student updateStudent(Student user, Student existingStudent);
 }
